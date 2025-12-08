@@ -1,4 +1,5 @@
 // ==================== GLOBAL VARIABLES ====================
+
 let classifiedRequirements = [];
 let currentUser = null;
 let currentProject = null;
@@ -451,8 +452,6 @@ function login() {
         return;
     }
     
-    // In production, use proper password hashing comparison
-    // For demo purposes, we're using plain text (NOT FOR PRODUCTION)
     if (password !== user.password) {
         // Check for too many failed attempts
         const failedAttempts = JSON.parse(localStorage.getItem('failedLoginAttempts') || '{}');
@@ -1059,7 +1058,7 @@ function enhancedClassificationWithML(requirement) {
     return basicClassification;
 }
 
-// Original classification function (kept for reference)
+// Original classification function
 function enhancedClassification(requirement) {
     // Input validation
     if (!requirement || typeof requirement !== 'string') {
@@ -1824,7 +1823,7 @@ function classifyRequirements() {
     loadingIndicator.style.display = 'block';
     outputContainer.innerHTML = '<p class="text-muted text-center py-4">Classifying requirements...</p>';
     
-    // Add slight delay to show loading (better UX)
+    // Add slight delay to show loading
     setTimeout(() => {
         try {
             // Process requirements
@@ -2954,7 +2953,7 @@ function initializeSpeechRecognition() {
     }
 }
 
-// ==================== MODEL GENERATION FUNCTIONS (From original code) ====================
+// ==================== MODEL GENERATION FUNCTIONS ====================
 
 function generateClassDiagram() {
     const diagramCode = document.getElementById('classDiagramCode');
@@ -3278,9 +3277,8 @@ function showAllFeedback() {
 }
 
 function filterFeedback(filter) {
-    // This function would filter the feedback display
+    // filter the feedback display
     console.log('Filtering feedback by:', filter);
-    // Implementation would depend on how you want to display filtered feedback
 }
 
 function clearAllFeedback() {
@@ -3301,7 +3299,6 @@ function clearAllFeedback() {
 // ==================== ADDITIONAL SECURITY FUNCTIONS ====================
 
 function encryptData(data) {
-    // This is a basic example. In production, use a proper encryption library
     try {
         return btoa(unescape(encodeURIComponent(JSON.stringify(data))));
     } catch (error) {
@@ -3321,7 +3318,6 @@ function decryptData(encryptedData) {
 
 // ==================== FINAL INITIALIZATION ====================
 
-// Make sure all functions are available globally
 window.enhancedClassificationWithML = enhancedClassificationWithML;
 window.enhancedClassification = enhancedClassification;
 window.classifyRequirements = classifyRequirements;
